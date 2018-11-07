@@ -2,6 +2,7 @@ package edu.uw.memorylab;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,19 @@ public class BirdActivity extends AppCompatActivity {
         });
 
         /* Set up image */
+        Drawable image = ContextCompat.getDrawable(this, R.drawable.hummingbird); //get the drawable resource
+        ImageView birdView = (ImageView)findViewById(R.id.imgBird);
+        birdView.setImageDrawable(image);
+    }
+
+    protected void onStop() {
+        super.onStop();
+        ImageView bird = (ImageView) findViewById(R.id.imgBird);
+        bird.setImageDrawable(null);
+    }
+
+    protected void onStart() {
+        super.onStart();
         Drawable image = ContextCompat.getDrawable(this, R.drawable.hummingbird); //get the drawable resource
         ImageView birdView = (ImageView)findViewById(R.id.imgBird);
         birdView.setImageDrawable(image);
